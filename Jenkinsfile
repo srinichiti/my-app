@@ -7,22 +7,7 @@ node{
       sh "${mvnHome}/bin/mvn clean package"
 	  sh 'mv target/myweb*.war target/newapp.war'
    }
-}
-stage('Docker Build and Image') {
-           steps {              
-	 sh "docker build -t itsmekarthik/testing_new:${BUILD_NUMBER} ."                            
-          }
-        }
-stage('Docker Login') {
-           steps { 
-		   withCredentials([string(credentialsId: 'Dockerid', variable: 'Dockerpwd')]) {
-	sh "docker login -u itsmekarthik -p ${Dockerpwd}" 
-}
-		                             
-          }
-        }
-stage('Push to Repository') {
-           steps {              
-	 sh "docker push -t itsmekarthik/testing:${BUILD_NUMBER}"                            
+stage('Docker Build and Image') {           
+	 sh 'docker build -t itsmekarthik/myweb:0.0.2 .'                           
           }
         }
