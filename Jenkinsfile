@@ -15,6 +15,6 @@ node{
            }
 	sh "docker login -u itsmekarthik -p ${dockerhubpwd}"		
            }
-	 sh 'docker push -t itsmekarthik/my-app:0.0.2' 
+	 sh 'docker push -t itsmekarthik/my-app:0.0.2'
 	   }
            }
