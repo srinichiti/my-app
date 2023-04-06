@@ -8,12 +8,21 @@ node{
 	  sh 'mv target/myweb*.war target/newapp.war'
    }
 }
-stage('Docker Build and Tag') {
-           steps {
-              
-                sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp itsmekarthik/samplewebapp:latest'
-                //sh 'docker tag samplewebapp itsmekarthik/samplewebapp:$BUILD_NUMBER'
-               
+stage('Docker Build and Image') {
+           steps {              
+	 sh "docker build -t itsmekarthik/testing:${BUILD_NUMBER} ."                            
+          }
+        }
+stage('Docker Login') {
+           steps { 
+		   withCredentials([string(credentialsId: 'Dockerid', variable: 'Dockerpwd')]) {
+	sh "docker login -u itsmekarthik -p ${Dockerpwd}" 
+}
+		                             
+          }
+        }
+stage('Push to Repository') {
+           steps {              
+	 sh "docker push -t itsmekarthik/testing:${BUILD_NUMBER}"                            
           }
         }
