@@ -1,10 +1,11 @@
 node{
-stage('SCM Checkout'){
-git 'https://github.com/kkarthikrj/my-app'
-}
-stage('Compile-Package'){
-//Get maven home path
-def mvnHome = tool name: 'maven-3', type: 'maven'
-sh "${mvnHome}/bin/mvn package"
-}
+   stage('SCM Checkout'){
+     git 'https://github.com/kkarthikrj/my-app.git'
+   }
+   stage('maven-buildstage'){
+
+      def mvnHome =  tool name: 'maven3', type: 'maven'   
+      sh "${mvnHome}/bin/mvn clean package"
+	  sh 'mv target/myweb*.war target/newapp.war'
+   }
 }
