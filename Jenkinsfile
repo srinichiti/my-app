@@ -8,6 +8,7 @@ node{
 	  sh 'mv target/myweb*.war target/newapp.war'
    }
    stage('Build Docker Image'){           
-	 sh 'docker build -t itsmekarthik/my-app:0.0.2 .'                           
+	 sh 'docker build -t itsmekarthik/my-app:0.0.2 .' 
+	 set +e
    }
    }
