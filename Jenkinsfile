@@ -10,7 +10,7 @@ node{
 }
 stage('Docker Build and Image') {
            steps {              
-	 sh "docker build -t itsmekarthik/testing:${BUILD_NUMBER} ."                            
+	 sh "docker build -t itsmekarthik/testing_new:${BUILD_NUMBER} ."                            
           }
         }
 stage('Docker Login') {
