@@ -10,4 +10,10 @@ node{
    stage('Build Docker Image'){           
 	 sh 'docker build -t itsmekarthik/my-app:0.0.2 .' 
 	   }
+	stage('Push Docker Image'){   
+		withCredentials([string(credentialsId: 'Dockerid', variable: 'dockerhubpwd')]) {
+			sh "docker login -u itsmekarthik -p ${dockerhubpwd}"		
+      }
+	 sh 'docker build -t itsmekarthik/my-app:0.0.2' 
+	   }
    }
