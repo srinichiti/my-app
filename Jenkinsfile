@@ -9,6 +9,6 @@ node{
    }
    stage('Build Docker Image'){           
 	 sh 'docker build -t itsmekarthik/my-app:0.0.2 .' 
-	 returnStatus: true
+	 IF %ERRORLEVEL% EQU 1 (exit /B 0) ELSE (exit /B 1)
    }
    }
