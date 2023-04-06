@@ -9,7 +9,7 @@ node{
    }
 }
 stage('Build Docker Image'){
-   sh 'docker build -t itsmekarthik/myweb:0.0.5'
+   sh 'docker build -t itsmekarthik/testing'
    }
    stage('Docker Image Push'){
    withCredentials([string(credentialsId: 'dockerPass', variable: 'docker-hub-karthik')]) {
