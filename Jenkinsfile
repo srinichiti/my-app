@@ -7,7 +7,7 @@ node{
       sh "${mvnHome}/bin/mvn clean package"
 	  sh 'mv target/myweb*.war target/newapp.war'
    }
-stage('Docker Build and Image') {           
-	 sh 'docker build -t itsmekarthik/myweb:0.0.2 .'                           
-          }
-        }
+   stage('Build Docker Image'){           
+	 sh 'docker build -t itsmekarthik/my-app:0.0.2 .'                           
+   }
+   }
