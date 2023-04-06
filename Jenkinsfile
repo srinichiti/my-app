@@ -12,7 +12,7 @@ stage('Build Docker Image'){
    sh 'docker build -t itsmekarthik/myweb:0.0.5'
    }
    stage('Docker Image Push'){
-   withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
+   withCredentials([string(credentialsId: 'dockerPass', variable: 'docker-hub-karthik')]) {
    sh "docker login -u itsmekarthik -p ${dockerPassword}"
     }
    sh 'docker push itsmekarthik/myweb:0.0.5'
