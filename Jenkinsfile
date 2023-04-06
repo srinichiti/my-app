@@ -17,4 +17,4 @@ node{
            }
 	 sh 'docker push -t itsmekarthik/my-app:0.0.2'
 	   }
-           }
+           
