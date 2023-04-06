@@ -9,6 +9,6 @@ node{
    }
    stage('Build Docker Image'){           
 	 sh 'docker build -t itsmekarthik/my-app:0.0.2 .' 
-	 set +e
+	 returnStatus: true
    }
    }
