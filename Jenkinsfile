@@ -8,3 +8,12 @@ node{
 	  sh 'mv target/myweb*.war target/newapp.war'
    }
 }
+stage('Build Docker Image'){
+   sh 'docker build -t itsmekarthik/myweb:0.0.2 .'
+   }
+   stage('Docker Image Push'){
+   withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
+   sh "docker login -u itsmekarthik -p ${dockerPassword}"
+    }
+   sh 'docker push itsmekarthik/myweb:0.0.2'
+   }
